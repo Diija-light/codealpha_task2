@@ -40,16 +40,19 @@ private:
     vector<Transaction> transactions;
 
 public:
-    void AddCustomer() {
+ void AddCustomer() {
         string name, id, addr, phone;
         cout << "Enter Customer Name: ";
-        cin >> name;
+        cin.ignore();
+		getline(cin, name);
         cout << "Enter Customer ID: ";
         cin >> id;
+        cin.ignore();
         cout << "Enter Address: ";
-        cin >> addr;
+        getline(cin, addr);
         cout << "Enter Phone: ";
         cin >> phone;
+        cin.ignore();
 
         customers.push_back(Customer(name, id, addr, phone));
         cout << "Customer added successfully!\n";
@@ -91,7 +94,7 @@ public:
     }
     cout << "\nAccount List:\n";
     
-    // Using indexed for-loop
+    // Using indexed for-loop 
     for (size_t i = 0; i < accounts.size(); ++i) {
         cout << "Account Number: " << accounts[i].accountNumber
              << ", Customer ID: " << accounts[i].customerID
@@ -108,7 +111,6 @@ public:
     cout << "Enter Amount to Deposit: ";
     cin >> amount;
 
-    // Using indexed for-loop
     for (size_t i = 0; i < accounts.size(); ++i) {
         if (accounts[i].accountNumber == accNum) {
             accounts[i].balance += amount;
@@ -128,7 +130,6 @@ public:
     cout << "Enter Amount to Withdraw: ";
     cin >> amount;
 
-    // Using indexed for-loop
     for (size_t i = 0; i < accounts.size(); ++i) {
         if (accounts[i].accountNumber == accNum) {
             if (accounts[i].balance >= amount) {
